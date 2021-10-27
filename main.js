@@ -15,12 +15,12 @@ const intro = () => {
     const introTl = gsap.timeline({defaults: {ease: 'power1.out'}});
 
     introTl.fromTo('.first-transition', {opacity: 0}, {opacity: 1, duration: .3, delay: .5})
-    introTl.to('.first-transition', {opacity: 0, delay: 1})
+    introTl.to('.first-transition', {opacity: 0, delay: 1, y: -20, duration: .3})
     introTl.fromTo('.second-transition', {opacity: 0}, {opacity: 1, duration: .3}, '-=.2')
     introTl.to('.second-a', {left: '50%', duration: .3}, '-=.3')
     introTl.to('.second-b', {right: '50%', duration: .3}, '-=.3')
-    introTl.to('.second-a', {opacity: 0, y: '-10%', duration: .3, delay: 1})
-    introTl.to('.second-b', {opacity: 0, y: '-10%', duration: .3}, '-=.3')
+    introTl.to('.second-a', {opacity: 0, y: -10, duration: .3, delay: 1})
+    introTl.to('.second-b', {opacity: 0, y: -10, duration: .3}, '-=.3')
     introTl.to('.slider-container', {opacity: 0, zIndex: -1, duration: .3})
 }
 
