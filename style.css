@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+:root {
+    /* PRIMARY */
+    --Blue: hsl(246, 80%, 60%);
+    --work: hsl(15, 100%, 70%);
+    --play: hsl(195, 74%, 62%);
+    --study: hsl(348, 100%, 68%);
+    --exercise: hsl(145, 58%, 55%);
+    --social: hsl(264, 64%, 52%);
+    --self-care: hsl(43, 84%, 65%);
+
+    /* NEUTRAL */
+    --Very-dark-blue: hsl(226, 43%, 10%);
+    --Dark-blue: hsl(235, 46%, 20%);
+    --Desaturated-blue: hsl(235, 45%, 61%);
+    --Pale-Blue: hsl(236, 100%, 87%);
+
+    /* FONT WEIGHTS - 300, 400, 500 */
+    --rubik-light: 300;
+    --rubik-regular: 400;
+    --rubik-medium: 500;
+}
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 18px;
+    background-color: var(--Very-dark-blue);
+}
+
+p, button, a {
+    font-family: 'Rubik', sans-serif;
+}
+
+.container {
+    width: min(90%, 900px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    padding-block: 3em;
+}
+
+/* SLIDER */
+.slider-container {
+    position: fixed;
+    z-index: 100;
+}
+
+.slider {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: var(--Very-dark-blue);  
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.slider-container p {
+    font-size: clamp(36px, 9vw, 60px);
+    position: absolute;
+    opacity: 0;
+}
+
+.second-a {
+    top: 30%;
+    left: 45%;
+    transform: translate(-50%, 70%);
+}
+
+.second-b {
+    bottom: 43%;
+    right: 45%;
+    transform: translate(50%, 57%);
+}
+
+.user-container,
+.tab {
+    background-color: var(--Dark-blue);
+    border-radius: .8em;
+    overflow: hidden;
+    text-align: center;
+}
+
+.tab-bg {
+    margin-top: 1em;
+}
+
+.user-container {
+    width: clamp(90%, 100%, 800px);
+}
+
+.user-profile {
+    display: flex;
+    background-color: var(--Blue);
+    border-radius: .8em;
+    padding: 1.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile img {
+    width: min(75px, 100%);
+    border: 3px solid white;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.user-profile-text {
+    text-align: left;
+}
+
+.user-report-for {
+    color: var(--Pale-Blue);
+    font-size: 15px;
+}
+
+.user-name {
+    color: white;
+    font-weight: var(--rubik-light);
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+.user-container button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    color: var(--Desaturated-blue);
+    margin-block: 1.3em;
+    cursor: pointer;
+    transition: color 250ms ease;
+}
+
+.user-container button + button {
+    margin-left: 2em;
+}
+
+.user-container button:hover {
+    color: white
+}
+
+.user-container .active {
+    color: white;
+}
+
+/* TAB */
+.tab-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.tab-bg {
+    width: min(350px, 100%);
+    height: calc(100px + 70px);
+    border-radius: .8em;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    position: relative;
+}
+
+.tab-bg-icon {
+    position: absolute;
+    top: -3%;
+    right: 5%;
+}
+
+.work-bg {
+    background-color: var(--work);
+}
+.play-bg {
+    background-color: var(--play);
+}
+.study-bg {
+    background-color: var(--study);
+}
+.exercise-bg {
+    background-color: var(--exercise);
+}
+.social-bg {
+    background-color: var(--social);
+}
+.self-care-bg {
+    background-color: var(--self-care);
+}
+
+.tab {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    align-items: center;
+    padding: 1.3em;
+    width: 100%;
+    border-radius: .8em .8em 0 0;
+    z-index: 5;
+    position: relative;
+}
+
+.tab-toggle-container {
+    position: relative;
+    text-align: right;
+}
+
+.tab-toggle-list {
+    --Very-dark-blue: hsla(226, 41%, 10%, 0.904);
+    background-color: var(--Very-dark-blue);
+    backdrop-filter: blur(1px);
+    border-radius: .8em 0 .8em .8em;
+    display: flex;
+    flex-direction: row; 
+    list-style: none;
+    text-align: right;
+    padding: .8em 1em;
+    position: absolute;
+    right: 0;
+    z-index: 100; 
+    transform: scale(0);
+    transform-origin: top right;
+    transition: transform 250ms ease-out;
+}
+
+.tab-toggle-list-active {
+    transform: scale(1);
+}
+
+.tab-toggle-list-active .tab-toggle {
+    opacity: 1;
+}
+
+.tab-toggle-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.tab-toggle-list li + li {
+    margin-left: .7em;
+}
+
+.tab-toggle {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    transition: color 250ms ease,
+                opacity 250ms ease 250ms;
+    width: 100%;
+    text-align: right;
+}
+
+.tab-toggle:hover {
+    color: var(--Blue);
+}
+
+.tab-toggle-active {
+    color: var(--Blue);
+}
+
+.tab-activity-name,
+.tab-hours {
+    text-align: left;
+    color: white;
+}
+
+.ellipsis-btn,
+.tab-previous-hours {
+    text-align: right;
+}
+
+.ellipsis-btn {
+    background-color: transparent;
+    border: none;
+    padding: 1em 0 1em 1em;
+    width: 50px;
+    cursor: pointer;
+}
+
+.tab-activity-name {
+    line-height: 1.8;
+}
+
+.tab-hours {
+    font-size: 28px;
+    font-weight: var(--rubik-light);
+}
+
+.tab-previous-hours {
+    color: var(--Pale-Blue);
+    font-size: 16px;
+    font-weight: var(--rubik-light);
+}
+
+@media screen and (min-width: 1100px) {
+    .second-a {
+        top: calc(42% - .25em);
+        left: 45%;
+        transform: translate(-50%, 58%);
+    }
+    
+    .second-b {
+        bottom: calc(42% - .25em);
+        right: 45%;
+        transform: translate(50%, 58%);
+    }
+
+    .container {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        height: 100vh;
+    }
+
+    .user-container {
+        margin-right: .5em;
+    }
+
+    .tab-toggle-list {
+        flex-direction: column; 
+        padding: 1em 1.3em;
+        bottom: calc(-100% - 80px); 
+        right: 5%;
+        backdrop-filter: revert;
+    }
+
+
+    .tab-toggle-list li + li {
+        margin-left: 0;
+        margin-top: .5em;
+    }
+
+    .tab-container {
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr 1fr;
+        grid-template-areas: 'col1 col2 col3'
+                             'col4 col5 col6';
+        margin-left: 1.5em;
+        grid-gap: 1em 0;
+    }
+
+    .tab-bg {
+        margin-top: 0;
+    }
+
+    .work-bg {
+        grid-area: col1;
+    }
+    .play-bg {
+        grid-area: col2;
+    }
+    .study-bg {
+        grid-area: col3;
+    }
+    .exercise-bg {
+        grid-area: col4;
+    }
+    .social-bg {
+        grid-area: col5;
+    }
+    .self-care-bg {
+        grid-area: col6;
+    }
+
+    .user-container {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1.7em;
+    }
+
+    .user-profile {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 320px;
+    }
+
+    .user-profile img {
+        margin-bottom: 2em;
+    }
+
+    .user-name {
+        font-size: 32px;
+        line-height: 1.5;
+    }
+
+    .user-container button + button {
+        margin-left: 1.5em;
+    }
+
+    .user-container button {
+        text-align: left;
+        margin-bottom: .1em;
+        margin-left: 1.5em
+    }
+
+    .tab-bg {
+        width: 230px;
+        margin-inline: .5em;
+        height: calc(125px + 110px);
+    }
+
+    .tab {
+        grid-template: 25px 1fr 20px / 1fr 1fr;
+        grid-template-areas: 'name btn'
+                             'hours hours'
+                             'prev prev';
+    }
+
+    .tab-activity-name {
+        grid-area: name;
+    }
+
+    .ellipsis-btn {
+        grid-area: btn;
+    }
+
+    .tab-hours {
+        grid-area: hours;
+        font-size: 60px;
+        margin-top: .5em;
+    }
+
+    .tab-previous-hours {
+        grid-area: prev;
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .second-a {
+        top: calc(30% + 110px);
+        left: 45%;
+        transform: translate(-50%, 70%);
+    }
+    
+    .second-b {
+        bottom: calc(43% + 110px);
+        right: 45%;
+        transform: translate(50%, 57%);
+    }
+
+    .container {
+        width: min(90%, 1400px);
+    }
+
+    .user-container,
+    .tab-bg {
+        width: 350px;
+    }
+
+    .user-profile img {
+        width: min(100%, 100px);
+    }
+
+    .user-report-for {
+        font-size: 24px;
+    }
+
+    .user-name {
+        font-size: 38px;
+    }
+
+    .user-container button {
+        font-size: 24px;
+    }
+
+    .tab-bg {
+        height: calc(125px + 133px);
+    }
+
+    .tab-activity-name {
+        font-size: 28px;
+    }
+
+    .tab-hours {
+        font-size: 72px;
+    }
+
+    .tab-previous-hours {
+        font-size: 21px;
+    }
+}

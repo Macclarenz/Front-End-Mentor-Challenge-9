@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Time tracking dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-container" aria-hidden="true">
+    <div class="slider">
+      <p class='second-transition second-a'>HOW'S YOUR</p>
+      <p class='first-transition'>HELLO</p>
+      <p class='second-transition second-b'>DAY?</p>
+    </div>
+  </div>
+  <main class="container">
+
+
+    <div class="user-container">
+      <div class="user-profile">
+        <img src="./images/image-jeremy.png" alt="jeremy picture">
+        <div class="user-profile-text">
+          <p class='user-report-for'>Report for</p>
+          <p class='user-name'>Jeremy Robson</p>
+        </div>
+      </div>
+      <button class="daily-btn">Daily</button>
+      <button class="weekly-btn active">Weekly</button>
+      <button class="monthly-btn">Monthly</button>
+    </div>
+    <div class="tab-container">
+
+      <div class="tab-bg work-bg">
+        <img class='tab-bg-icon' src="./images/icon-work.svg" alt="case icon">
+        <div class="tab">
+          <p class='tab-activity-name'>Work</p>
+          <div class="tab-toggle-container">
+            <button onclick="ttlDisplay('ttl-work')" class='ellipsis-btn'><img src="./images/icon-ellipsis.svg"
+                alt="ellipsis icon button" class='ellipsis-icon'></button>
+            <ul class='tab-toggle-list' id='ttl-work'>
+              <li><button onclick="dailyTab('.work-value', 0, 'tt-1', '#ttl-work .tab-toggle')"
+                  class="tab-toggle tab-daily" id='tt-1'>Daily</button></li>
+              <li><button onclick="weeklyTab('.work-value', 0, 'tt-2', '#ttl-work .tab-toggle')"
+                  class="tab-toggle tab-toggle-active tab-weekly" id='tt-2'>Week</button></li>
+              <li><button onclick="monthlyTab('.work-value', 0, 'tt-3', '#ttl-work .tab-toggle')"
+                  class="tab-toggle tab-monthly" id='tt-3'>Monthly</button></li>
+            </ul>
+          </div>
+
+          <p class='tab-hours work-value'>-</p>
+          <p class='tab-previous-hours'>-</p>
+        </div>
+      </div>
+
+      <div class="tab-bg play-bg">
+        <img class='tab-bg-icon' src="./images/icon-play.svg" alt="play icon">
+        <div class="tab">
+          <p class='tab-activity-name'>Play</p>
+          <div class="tab-toggle-container">
+            <button onclick="ttlDisplay('ttl-play')" class='ellipsis-btn'><img src="./images/icon-ellipsis.svg"
+                alt="ellipsis icon button" class='ellipsis-icon'></button>
+            <ul class='tab-toggle-list' id='ttl-play'>
+              <li><button onclick="dailyTab('.play-value', 1, 'tt-4', '#ttl-play .tab-toggle')"
+                  class="tab-toggle tab-daily" id='tt-4'>Daily</button></li>
+              <li><button onclick="weeklyTab('.play-value', 1, 'tt-5', '#ttl-play .tab-toggle')"
+                  class="tab-toggle tab-toggle-active tab-weekly" id='tt-5'>Week</button></li>
+              <li><button onclick="monthlyTab('.play-value', 1, 'tt-6', '#ttl-play .tab-toggle')"
+                  class="tab-toggle tab-monthly" id='tt-6'>Monthly</button></li>
+            </ul>
+          </div>
+          <p class='tab-hours play-value'>-</p>
+          <p class='tab-previous-hours'>-</p>
+        </div>
+      </div>
+
+      <div class="tab-bg study-bg">
+        <img class='tab-bg-icon' src="./images/icon-study.svg" alt="book icon">
+        <div class="tab">
+          <p class='tab-activity-name'>Study</p>
+          <div class="tab-toggle-container">
+            <button onclick="ttlDisplay('ttl-study')" class='ellipsis-btn'><img src="./images/icon-ellipsis.svg"
+                alt="ellipsis icon button" class='ellipsis-icon'></button>
+            <ul class='tab-toggle-list' id='ttl-study'>
+              <li><button onclick="dailyTab('.study-value', 2, 'tt-7', '#ttl-study .tab-toggle')"
+                  class="tab-toggle tab-daily" id='tt-7'>Daily</button></li>
+              <li><button onclick="weeklyTab('.study-value', 2, 'tt-8', '#ttl-study .tab-toggle')"
+                  class="tab-toggle tab-toggle-active tab-weekly" id='tt-8'>Week</button></li>
+              <li><button onclick="monthlyTab('.study-value', 2, 'tt-9', '#ttl-study .tab-toggle')"
+                  class="tab-toggle tab-monthly" id='tt-9'>Monthly</button></li>
+            </ul>
+          </div>
+          <p class='tab-hours study-value'>-</p>
+          <p class='tab-previous-hours'>-</p>
+        </div>
+      </div>
+
+      <div class="tab-bg exercise-bg">
+        <img class='tab-bg-icon' src="./images/icon-exercise.svg" alt="exercise-bg icon">
+        <div class="tab">
+          <p class='tab-activity-name'>Exercise</p>
+          <div class="tab-toggle-container">
+            <button onclick="ttlDisplay('ttl-exercise')" class='ellipsis-btn'><img src="./images/icon-ellipsis.svg"
+                alt="ellipsis icon button" class='ellipsis-icon'></button>
+            <ul class='tab-toggle-list' id='ttl-exercise'>
+              <li><button onclick="dailyTab('.exercise-value', 3, 'tt-10', '#ttl-exercise .tab-toggle')"
+                  class="tab-toggle tab-daily" id='tt-10'>Daily</button></li>
+              <li><button onclick="weeklyTab('.exercise-value', 3, 'tt-11', '#ttl-exercise .tab-toggle')"
+                  class="tab-toggle tab-toggle-active tab-weekly" id='tt-11'>Week</button></li>
+              <li><button onclick="monthlyTab('.exercise-value', 3, 'tt-12', '#ttl-exercise .tab-toggle')"
+                  class="tab-toggle tab-monthly" id='tt-12'>Monthly</button></li>
+            </ul>
+          </div>
+          <p class='tab-hours exercise-value'>-</p>
+          <p class='tab-previous-hours'>-</p>
+        </div>
+      </div>
+
+      <div class="tab-bg social-bg">
+        <img class='tab-bg-icon' src="./images/icon-social.svg" alt="Social icon">
+        <div class="tab">
+          <p class='tab-activity-name'>Social</p>
+          <div class="tab-toggle-container">
+            <button onclick="ttlDisplay('ttl-social')" class='ellipsis-btn'><img src="./images/icon-ellipsis.svg"
+                alt="ellipsis icon button" class='ellipsis-icon'></button>
+            <ul class='tab-toggle-list' id='ttl-social'>
+              <li><button onclick="dailyTab('.social-value', 4, 'tt-13', '#ttl-social .tab-toggle')"
+                  class="tab-toggle tab-daily" id='tt-13'>Daily</button></li>
+              <li><button onclick="weeklyTab('.social-value', 4, 'tt-14', '#ttl-social .tab-toggle')"
+                  class="tab-toggle tab-toggle-active tab-weekly" id='tt-14'>Week</button></li>
+              <li><button onclick="monthlyTab('.social-value', 4, 'tt-15', '#ttl-social .tab-toggle')"
+                  class="tab-toggle tab-monthly" id='tt-15'>Monthly</button></li>
+            </ul>
+          </div>
+          <p class='tab-hours social-value'>-</p>
+          <p class='tab-previous-hours'>-</p>
+        </div>
+      </div>
+
+      <div class="tab-bg self-care-bg">
+        <img class='tab-bg-icon' src="./images/icon-self-care.svg" alt="heart icon">
+        <div class="tab">
+          <p class='tab-activity-name'>Self Care</p>
+          <div class="tab-toggle-container">
+            <button onclick="ttlDisplay('ttl-self-care')" class='ellipsis-btn'><img src="./images/icon-ellipsis.svg"
+                alt="ellipsis icon button" class='ellipsis-icon'></button>
+            <ul class='tab-toggle-list' id='ttl-self-care'>
+              <li><button onclick="dailyTab('.self-care-value', 5, 'tt-16', '#ttl-self-care .tab-toggle')"
+                  class="tab-toggle tab-daily" id='tt-16'>Daily</button></li>
+              <li><button onclick="weeklyTab('.self-care-value', 5, 'tt-17', '#ttl-self-care .tab-toggle')"
+                  class="tab-toggle tab-toggle-active tab-weekly" id='tt-17'>Week</button></li>
+              <li><button onclick="monthlyTab('.self-care-value', 5, 'tt-18', '#ttl-self-care .tab-toggle')"
+                  class="tab-toggle tab-monthly" id='tt-18'>Monthly</button></li>
+            </ul>
+          </div>
+          <p class='tab-hours self-care-value'>-</p>
+          <p class='tab-previous-hours'>-</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
+    integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src='./main.js'></script>
+</body>
+
+</html>
